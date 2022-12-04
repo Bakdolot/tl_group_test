@@ -8,35 +8,75 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Division',
+            name="Division",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('level', models.PositiveSmallIntegerField(choices=[(1, 'Level 1'), (2, 'Level 2'), (3, 'Level 3'), (4, 'Level 4'), (5, 'Level 5')])),
-                ('parent', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.division')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                (
+                    "level",
+                    models.PositiveSmallIntegerField(
+                        choices=[
+                            (1, "Level 1"),
+                            (2, "Level 2"),
+                            (3, "Level 3"),
+                            (4, "Level 4"),
+                            (5, "Level 5"),
+                        ]
+                    ),
+                ),
+                (
+                    "parent",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="main.division"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Position',
+            name="Position",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
-            name='Employer',
+            name="Employer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('full_name', models.CharField(max_length=255)),
-                ('acceptance_date', models.DateTimeField(auto_now_add=True)),
-                ('salary', models.DecimalField(decimal_places=2, max_digits=9)),
-                ('division', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.division')),
-                ('position', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.position')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
+                ),
+                ("full_name", models.CharField(max_length=255)),
+                ("acceptance_date", models.DateTimeField(auto_now_add=True)),
+                ("salary", models.DecimalField(decimal_places=2, max_digits=9)),
+                (
+                    "division",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="main.division"
+                    ),
+                ),
+                (
+                    "position",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="main.position"
+                    ),
+                ),
             ],
         ),
     ]

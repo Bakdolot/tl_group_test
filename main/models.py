@@ -12,10 +12,13 @@ class DivisionLevel(models.IntegerChoices):
 class Division(models.Model):
     name = models.CharField(max_length=100)
     level = models.PositiveSmallIntegerField(choices=DivisionLevel.choices)
-    parent = models.ForeignKey("self", on_delete=models.CASCADE)
+    parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        db_table = "Division"
 
 
 class Position(models.Model):
@@ -23,6 +26,9 @@ class Position(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        db_table = "Position"
 
 
 class Employer(models.Model):
@@ -34,3 +40,6 @@ class Employer(models.Model):
 
     def __str__(self):
         return self.full_name
+
+    class Meta:
+        db_table = "Employer"
